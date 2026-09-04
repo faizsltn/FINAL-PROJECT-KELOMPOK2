@@ -22,9 +22,9 @@ const morgan = require('morgan');
 const expressLayouts = require('express-ejs-layouts');
 
 const env = require('../config/env');
-const { initSchema } = require('../config/database');
+const { initSchema } = require('./backend/config/database');
 const mainRouter = require('./frontend/views/index');
-const { notFoundHandler, errorHandler } = require('../middlewares/error.middleware');
+const { notFoundHandler, errorHandler } = require('./backend/middlewares/error.middleware');
 
 // Inisialisasi skema database sebelum server menerima request.
 initSchema();

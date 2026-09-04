@@ -1,0 +1,44 @@
+<div class="mb-6">
+  <h1 class="font-display text-2xl font-bold text-ink-900">Riwayat Interaksi Chatbot</h1>
+  <p class="text-ink-700/60 text-sm mt-0.5">Percakapan chatbot kamu, dikelompokkan per kursus.</p>
+</div>
+
+<% if (grouped.length === 0) { %>
+  <div class="rounded-2xl border-2 border-dashed border-ink-900/10 py-16 text-center bg-white/40">
+    <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mx-auto mb-4">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    </div>
+    <p class="text-ink-700/70 mb-5 max-w-sm mx-auto">Belum ada riwayat percakapan. Buka salah satu kursus dan mulai bertanya ke chatbot.</p>
+    <a href="/courses" class="btn btn-primary inline-flex">Lihat Kursus Saya</a>
+  </div>
+<% } else { %>
+  <div class="space-y-4">
+    <% grouped.forEach(function(group) { %>
+      <details class="card p-5">
+        <summary class="cursor-pointer flex items-center justify-between gap-3 font-display font-semibold text-ink-900 list-none">
+          <span class="flex items-center gap-2">
+            <svg class="text-brand-600 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <%= group.outlineTitle %>
+          </span>
+          <span class="text-xs font-normal text-ink-700/40 shrink-0"><%= group.messages.length %> pesan</span>
+        </summary>
+
+        <div class="mt-4 pt-4 border-t border-ink-900/5 space-y-3 max-h-96 overflow-y-auto thin-scroll">
+          <% group.messages.forEach(function(m) { %>
+            <div class="flex <%= m.role === 'user' ? 'justify-end' : 'justify-start' %>">
+              <div class="max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm <%= m.role === 'user' ? 'bg-brand-600 text-white' : 'bg-paper-200/70 text-ink-800' %>">
+                <p class="whitespace-pre-wrap"><%= m.message %></p>
+                <p class="text-[10px] mt-1 opacity-60"><%= new Date(m.created_at).toLocaleString('id-ID') %></p>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <a href="/courses/<%= group.outlineId %>" class="inline-flex items-center gap-1 mt-4 text-xs font-semibold text-brand-600 hover:underline">
+          Buka kursus ini
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </details>
+    <% }) %>
+  </div>
+<% } %>

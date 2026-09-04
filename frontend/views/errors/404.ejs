@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Halaman Tidak Ditemukan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { display: ['"Space Grotesk"','sans-serif'], sans: ['Inter','sans-serif'] },
+      colors: { brand: { 500:'#6247F5',600:'#5031E0',700:'#4025B8' }, paper: { DEFAULT:'#F7F5EF' }, ink: { 900:'#12121A' } }
+    } } }
+  </script>
+</head>
+<body class="min-h-screen bg-paper font-sans flex items-center justify-center text-center px-4">
+  <div>
+    <div class="w-16 h-16 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mx-auto mb-5">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <h1 class="font-display text-3xl font-bold text-ink-900 mb-2">Halaman Tidak Ditemukan</h1>
+    <p class="text-ink-900/60 mb-6 max-w-sm mx-auto">Halaman yang kamu cari tidak ada atau sudah dipindahkan.</p>
+    <a href="/" class="inline-flex px-6 py-3 rounded-xl bg-gradient-to-b from-brand-500 to-brand-700 text-white font-semibold hover:brightness-105">Kembali ke Beranda</a>
+  </div>
+</body>
+</html>
