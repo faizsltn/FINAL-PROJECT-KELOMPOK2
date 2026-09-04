@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= typeof title !== 'undefined' ? title + ' — AI Course Generator' : 'AI Course Generator' %></title>
+  <meta name="description" content="AI Course Generator — susun outline kursus, materi, video, dan chatbot belajar secara otomatis dengan Gemini API & YouTube Data API." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ink: {
+              900: '#12121A', 800: '#1C1D29', 700: '#2A2C3D',
+            },
+            paper: {
+              DEFAULT: '#F7F5EF', 100: '#FDFCFA', 200: '#F1EEE4',
+            },
+            brand: {
+              50: '#F0EEFF', 100: '#E1DCFF', 200: '#C7BEFF', 300: '#A392FF',
+              400: '#8069FF', 500: '#6247F5', 600: '#5031E0', 700: '#4025B8',
+              800: '#331E92', 900: '#241564'
+            },
+            amber: {
+              50: '#FFF8E8', 100: '#FFEDC2', 300: '#FFCF66', 400: '#FFBB33',
+              500: '#F5A300', 600: '#CC8600',
+            },
+            teal: {
+              50: '#E9FBF8', 100: '#C9F5EE', 300: '#5CD9C7', 400: '#2BC4AE',
+              500: '#0FA893', 600: '#0C8977',
+            },
+          },
+          boxShadow: {
+            soft: '0 1px 2px rgba(18,18,26,0.04), 0 8px 24px -12px rgba(18,18,26,0.12)',
+            lift: '0 2px 6px rgba(18,18,26,0.06), 0 20px 40px -16px rgba(80,49,224,0.25)',
+          },
+          keyframes: {
+            fadeUp: { '0%': { opacity: 0, transform: 'translateY(10px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+            popIn: { '0%': { opacity: 0, transform: 'scale(0.96)' }, '100%': { opacity: 1, transform: 'scale(1)' } },
+          },
+          animation: {
+            fadeUp: 'fadeUp 0.5s ease-out both',
+            popIn: 'popIn 0.18s ease-out both',
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="min-h-screen bg-paper text-ink-900 flex flex-col font-sans antialiased">
+  <%- include('../partials/navbar') %>
+
+  <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <%- include('../partials/flash-messages') %>
+    <%- body %>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

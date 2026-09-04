@@ -1,0 +1,17 @@
+<% if (flashSuccess && flashSuccess.length) { %>
+  <% flashSuccess.forEach(function(msg) { %>
+    <div class="mb-4 flex items-start gap-2.5 rounded-xl border border-teal-100 bg-teal-50 px-4 py-3 text-sm text-teal-700 animate-fadeUp">
+      <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><%= msg %></span>
+    </div>
+  <% }) %>
+<% } %>
+
+<% if (flashError && flashError.length) { %>
+  <% flashError.forEach(function(msg) { %>
+    <div class="mb-4 flex items-start gap-2.5 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700 animate-fadeUp">
+      <svg class="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span><%= msg %></span>
+    </div>
+  <% }) %>
+<% } %>

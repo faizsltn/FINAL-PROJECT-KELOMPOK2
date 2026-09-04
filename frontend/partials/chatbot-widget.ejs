@@ -1,0 +1,53 @@
+<!--
+  Partial: chatbot-widget.ejs
+  Membutuhkan variabel `outlineId` dan `courseTitle` dari view pemanggil.
+  FR-6: chatbot interaktif untuk tanya jawab seputar materi kursus.
+-->
+<div
+  id="chatbot-widget"
+  data-outline-id="<%= outlineId %>"
+  class="fixed bottom-4 right-4 z-50 flex flex-col items-end"
+>
+  <div id="chatbot-panel" class="hidden w-[90vw] max-w-sm h-[70vh] max-h-[520px] bg-white rounded-2xl shadow-lift border border-ink-900/5 flex flex-col overflow-hidden mb-3 animate-popIn">
+    <div class="bg-gradient-to-r from-brand-600 to-brand-700 text-white px-4 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center shrink-0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="min-w-0">
+          <p class="font-display font-semibold text-sm leading-tight">Asisten Belajar</p>
+          <p class="text-xs text-brand-100 truncate"><%= courseTitle %></p>
+        </div>
+      </div>
+      <button id="chatbot-close" class="text-white/80 hover:text-white w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 shrink-0" aria-label="Tutup chatbot">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div id="chatbot-messages" class="flex-1 overflow-y-auto thin-scroll p-3 space-y-3 bg-paper-100">
+      <div class="text-xs text-ink-700/40 text-center py-2">Tanyakan apa saja seputar materi kursus ini 👋</div>
+    </div>
+
+    <form id="chatbot-form" class="border-t border-ink-900/5 p-2.5 flex gap-2 bg-white">
+      <input
+        id="chatbot-input"
+        type="text"
+        placeholder="Tulis pertanyaanmu..."
+        autocomplete="off"
+        class="field-input flex-1 py-2"
+      />
+      <button type="submit" class="btn btn-primary btn-sm px-3.5" aria-label="Kirim pertanyaan">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <button
+    id="chatbot-toggle"
+    class="w-14 h-14 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 hover:brightness-105 text-white shadow-lift flex items-center justify-center transition"
+    title="Buka Chatbot"
+    aria-label="Buka chatbot"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+  </button>
+</div>
