@@ -1,0 +1,29 @@
+<div class="mb-6">
+  <h1 class="font-display text-2xl font-bold text-ink-900">Kursus Saya</h1>
+  <p class="text-ink-700/60 text-sm mt-0.5">Kursus lengkap yang siap kamu pelajari (materi + video).</p>
+</div>
+
+<% if (courses.length === 0) { %>
+  <div class="rounded-2xl border-2 border-dashed border-ink-900/10 py-16 text-center bg-white/40">
+    <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center mx-auto mb-4">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 19.5V6a2 2 0 012-2h9a2 2 0 012 2v9a2 2 0 01-2 2H8l-4 4.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    </div>
+    <p class="text-ink-700/70 mb-5 max-w-sm mx-auto">Belum ada kursus lengkap. Konversi salah satu outline-mu menjadi kursus terlebih dahulu.</p>
+    <a href="/outlines" class="btn btn-primary inline-flex">Lihat Outline Saya</a>
+  </div>
+<% } else { %>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% courses.forEach(function(c) { %>
+      <a href="/courses/<%= c.id %>" class="card card-hover block p-5">
+        <span class="badge badge-complete">Kursus Lengkap</span>
+        <h3 class="font-display font-semibold text-ink-900 mt-3 line-clamp-2"><%= c.title %></h3>
+        <p class="text-xs text-ink-700/55 mt-1 line-clamp-2"><%= c.description %></p>
+        <p class="text-xs text-ink-700/40 mt-3">Diperbarui: <%= new Date(c.updated_at).toLocaleString('id-ID') %></p>
+        <span class="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-brand-600">
+          Mulai Belajar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    <% }) %>
+  </div>
+<% } %>

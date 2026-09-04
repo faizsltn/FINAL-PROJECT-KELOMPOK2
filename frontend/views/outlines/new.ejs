@@ -1,0 +1,56 @@
+<div class="max-w-xl mx-auto py-4 sm:py-6">
+  <div class="text-center mb-6">
+    <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-soft mb-4">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+    </span>
+    <h1 class="font-display text-2xl font-bold text-ink-900">Buat Outline Kursus Baru</h1>
+    <p class="text-ink-700/60 text-sm mt-1">Tulis topik apa saja yang ingin kamu pelajari — AI akan menyusun strukturnya.</p>
+  </div>
+
+  <form id="generate-outline-form" action="/outlines" method="POST" class="card p-6 sm:p-7 space-y-4">
+    <div>
+      <label class="field-label">Topik yang ingin dipelajari</label>
+      <textarea id="topic-input" name="topic" rows="3" required placeholder="Contoh: Belajar dasar Machine Learning untuk pemula"
+        class="field-input resize-none"><%= oldInput.topic || '' %></textarea>
+      <p class="text-xs text-ink-700/45 mt-1.5">Bisa topik teknis (misal &quot;Belajar React JS&quot;) atau non-teknis (misal &quot;Dasar-dasar Fotografi&quot;).</p>
+    </div>
+
+    <div>
+      <p class="text-xs font-medium text-ink-700/55 mb-2">Atau coba salah satu ide ini:</p>
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="chip" data-fill-topic="Belajar dasar Machine Learning untuk pemula">Dasar Machine Learning</button>
+        <button type="button" class="chip" data-fill-topic="Belajar React JS dari nol">React JS dari Nol</button>
+        <button type="button" class="chip" data-fill-topic="Dasar-dasar Fotografi untuk pemula">Dasar Fotografi</button>
+        <button type="button" class="chip" data-fill-topic="Manajemen Keuangan Pribadi Mahasiswa">Manajemen Keuangan</button>
+      </div>
+    </div>
+
+    <button id="generate-btn" type="submit" class="btn btn-primary w-full py-2.5">
+      <span id="generate-btn-text" class="inline-flex items-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+        Buat Outline dengan AI
+      </span>
+    </button>
+
+    <p class="text-xs text-center text-ink-700/45">Proses generate biasanya memakan waktu beberapa detik.</p>
+  </form>
+</div>
+
+<script>
+  (function () {
+    document.querySelectorAll('[data-fill-topic]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        document.getElementById('topic-input').value = chip.dataset.fillTopic;
+        document.getElementById('topic-input').focus();
+      });
+    });
+
+    document.getElementById('generate-outline-form').addEventListener('submit', function () {
+      const btn = document.getElementById('generate-btn');
+      const btnText = document.getElementById('generate-btn-text');
+      btn.disabled = true;
+      btn.classList.add('opacity-70', 'cursor-not-allowed');
+      btnText.innerHTML = '<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" stroke-opacity="0.25"/><path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg> Sedang menyusun outline...';
+    });
+  })();
+</script>
