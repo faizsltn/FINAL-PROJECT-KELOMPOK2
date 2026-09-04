@@ -13,7 +13,7 @@
 const path = require('path');
 const fs = require('fs');
 const Database = require('better-sqlite3');
-const env = require('../../../config/env');
+const env = require('./env');
 
 const dbDir = path.dirname(env.databasePath);
 if (!fs.existsSync(dbDir)) {
