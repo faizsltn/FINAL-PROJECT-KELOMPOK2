@@ -1,0 +1,56 @@
+<div class="max-w-xl mx-auto py-4 sm:py-6 space-y-6">
+  <div>
+    <h1 class="font-display text-2xl font-bold text-ink-900">Profil Saya</h1>
+    <p class="text-ink-700/60 text-sm mt-0.5">Kelola data akun dan password kamu.</p>
+  </div>
+
+  <div class="card p-6 sm:p-7">
+    <div class="flex items-center gap-4 mb-6">
+      <img
+        src="<%= profileUser.photo_url || 'https://api.dicebear.com/7.x/initials/svg?seed=' + encodeURIComponent(profileUser.name) %>"
+        alt="Foto profil"
+        class="w-16 h-16 rounded-2xl object-cover bg-paper-200 border border-ink-900/5"
+      />
+      <div>
+        <p class="font-display font-semibold text-ink-900"><%= profileUser.name %></p>
+        <p class="text-xs text-ink-700/55"><%= profileUser.email %></p>
+      </div>
+    </div>
+
+    <form action="/profile" method="POST" class="space-y-4">
+      <div>
+        <label class="field-label">Nama Lengkap</label>
+        <input type="text" name="name" value="<%= profileUser.name %>" required class="field-input" />
+      </div>
+      <div>
+        <label class="field-label">Email</label>
+        <input type="email" name="email" value="<%= profileUser.email %>" required class="field-input" />
+      </div>
+      <div>
+        <label class="field-label">URL Foto Profil (opsional)</label>
+        <input type="url" name="photoUrl" value="<%= profileUser.photo_url || '' %>" placeholder="https://..."
+          class="field-input" />
+      </div>
+      <button type="submit" class="btn btn-primary w-full py-2.5">
+        Simpan Perubahan
+      </button>
+    </form>
+  </div>
+
+  <div class="card p-6 sm:p-7">
+    <h2 class="font-display font-semibold text-ink-900 mb-4">Ganti Password</h2>
+    <form action="/profile/password" method="POST" class="space-y-4">
+      <div>
+        <label class="field-label">Password Lama</label>
+        <input type="password" name="currentPassword" required class="field-input" />
+      </div>
+      <div>
+        <label class="field-label">Password Baru</label>
+        <input type="password" name="newPassword" required minlength="6" class="field-input" />
+      </div>
+      <button type="submit" class="btn btn-secondary w-full py-2.5">
+        Ubah Password
+      </button>
+    </form>
+  </div>
+</div>

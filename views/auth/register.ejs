@@ -1,0 +1,45 @@
+<div class="max-w-md mx-auto py-8 sm:py-12">
+  <div class="text-center mb-7">
+    <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-soft mb-4">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+    </span>
+    <h1 class="font-display text-2xl font-bold text-ink-900">Buat Akun Baru</h1>
+    <p class="text-ink-700/60 text-sm mt-1">Mulai susun kursus belajarmu sendiri dengan bantuan AI.</p>
+  </div>
+
+  <form action="/auth/register" method="POST" class="card p-6 sm:p-7 space-y-4">
+    <div>
+      <label class="field-label">Nama Lengkap</label>
+      <input type="text" name="name" value="<%= oldInput.name || '' %>" required placeholder="Nama kamu"
+        class="field-input" />
+    </div>
+    <div>
+      <label class="field-label">Email</label>
+      <input type="email" name="email" value="<%= oldInput.email || '' %>" required placeholder="nama@email.com"
+        class="field-input" />
+    </div>
+    <div>
+      <label class="field-label">Password</label>
+      <div class="relative">
+        <input id="register-password" type="password" name="password" required minlength="6" placeholder="Minimal 6 karakter"
+          class="field-input pr-10" />
+        <button type="button" data-toggle-password="register-password" class="absolute right-3 top-1/2 -translate-y-1/2 text-ink-700/40 hover:text-brand-600" tabindex="-1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+      </div>
+    </div>
+    <div>
+      <label class="field-label">Konfirmasi Password</label>
+      <input type="password" name="confirmPassword" required minlength="6" placeholder="Ulangi password"
+        class="field-input" />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-full py-2.5">
+      Daftar
+    </button>
+
+    <p class="text-center text-sm text-ink-700/60">
+      Sudah punya akun? <a href="/auth/login" class="text-brand-600 font-semibold hover:underline">Masuk di sini</a>
+    </p>
+  </form>
+</div>
