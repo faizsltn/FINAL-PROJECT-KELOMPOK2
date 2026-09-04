@@ -1,0 +1,33 @@
+<div class="flex items-center justify-between gap-3 mb-6 flex-wrap">
+  <div>
+    <h1 class="font-display text-2xl font-bold text-ink-900">Outline Saya</h1>
+    <p class="text-ink-700/60 text-sm mt-0.5">Kelola outline kursus yang telah kamu buat dengan AI.</p>
+  </div>
+  <a href="/outlines/new" class="btn btn-primary">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    Buat Outline Baru
+  </a>
+</div>
+
+<% if (outlines.length === 0) { %>
+  <div class="rounded-2xl border-2 border-dashed border-ink-900/10 py-16 text-center bg-white/40">
+    <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mx-auto mb-4">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 6a2 2 0 00-2 2v8a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2M4 6l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <p class="text-ink-700/70 mb-5 max-w-sm mx-auto">Belum ada outline. Mulai dengan memasukkan topik yang ingin kamu pelajari.</p>
+    <a href="/outlines/new" class="btn btn-primary inline-flex">Buat Outline Pertamamu</a>
+  </div>
+<% } else { %>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% outlines.forEach(function(o) { %>
+      <a href="/outlines/<%= o.id %>" class="card card-hover block p-5">
+        <span class="badge <%= o.status === 'lengkap' ? 'badge-complete' : 'badge-draft' %>">
+          <%= o.status === 'lengkap' ? 'Kursus Lengkap' : 'Draft Outline' %>
+        </span>
+        <h3 class="font-display font-semibold text-ink-900 mt-3 line-clamp-2"><%= o.title %></h3>
+        <p class="text-xs text-ink-700/55 mt-1">Topik: <%= o.topic %></p>
+        <p class="text-xs text-ink-700/40 mt-3">Diperbarui: <%= new Date(o.updated_at).toLocaleString('id-ID') %></p>
+      </a>
+    <% }) %>
+  </div>
+<% } %>
