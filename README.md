@@ -143,4 +143,3 @@ npm run dev
 | Radiva Galih Nofriyanto | 20240140279 |
 
 ---
-*Dibuat untuk memenuhi tugas Final Project mata kuliah Pengembangan Aplikasi Web (PAW).*
